@@ -19,4 +19,22 @@ class LongestCommonPrefix {
         }
         return strs[0].substring(0,count);
     }
+    
+    // Efficient Way
+    public String longestCommonPrefix(String[] strs) {
+        int count = 0;
+        String s = strs[0];
+        for(int i = 0; i < s.length(); i++) {
+            char cur = s.charAt(i);
+            boolean flag = true;
+            for(int j = 1; j < strs.length; j++) {
+                if(strs[j].length() <= i || cur != strs[j].charAt(i)) {
+                    flag = false;
+                }
+            }
+            if(flag) count++;
+            else break;
+        }
+        return strs[0].substring(0,count);
+    }
 }
